@@ -1,0 +1,31 @@
+
+<% if @response.present? %>
+<h2>
+  Response from <%= @uri_string %>
+</h2>
+
+<table>
+  <thead>
+    <tr>
+    <th>Response Field</th>
+    <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>Success?</th>
+    <td><%= @response.success?%></td>
+    </tr>
+    <tr>
+    <th>Status</th>
+    <td><%= @response.status %></td>
+    </tr>
+    <tr>
+      <th>Body</th>
+      <td>
+        <%=raw  Json2table::get_html_table(@response.body) %>
+      </td>
+  </tbody>
+</table>
+
+<% end %>

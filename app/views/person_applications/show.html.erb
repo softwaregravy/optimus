@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Citizenship:</strong>
+  <%= @person_application.citizenship %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @person_application.date_of_birth %>
+</p>
+
+<p>
+  <strong>Email address:</strong>
+  <%= @person_application.email_address %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @person_application.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @person_application.last_name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @person_application.phone_number %>
+</p>
+
+<p>
+  <strong>Tin:</strong>
+  <%= @person_application.tin %>
+</p>
+
+<p>
+  <strong>Street line 1:</strong>
+  <%= @person_application.street_line_1 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @person_application.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @person_application.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @person_application.postal_code %>
+</p>
+
+
+<%= render "shared/api_response" %>
+
+<%= link_to 'Edit', edit_person_application_path(@person_application) %> |
+<%= link_to 'Back', person_applications_path %>
