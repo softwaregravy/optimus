@@ -50,6 +50,26 @@ class PersonApplicationsController < ApplicationController
     end
   end
 
+  def apply_for_chequing
+      service = TreasuryPrime.new
+    @person_application = PersonApplication.find(params[:id])
+    respond_to do |format|
+      if @person_application.treasury_prime_id.present? && @person_application.checking_application_id.nil?
+        @uri_string, @response = service.apply_for_chequing(@person_application)
+        if @response.success?
+          @person_application.checking_application_id = JSON.parse(@response.body)["id"]
+          @person_application.save
+          format.html { render :show, status: :created, notice: "Applied for account" }
+        else
+          format.html { render :show, status: :unprocessable_entity, notice: "Checking account application failed" }
+        end
+      else
+        format.html { render :show, status: :unprocessable_entity, notice: "Person Application Id Not Found" }
+      end
+    end
+
+  end
+
   # PATCH/PUT /person_applications/1 or /person_applications/1.json
   def update
     respond_to do |format|

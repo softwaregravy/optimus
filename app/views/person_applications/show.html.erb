@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Application Details</h1>
 <p>
   <strong>Citizenship:</strong>
   <%= @person_application.citizenship %>
@@ -55,8 +56,18 @@
   <%= @person_application.postal_code %>
 </p>
 
+<p>
+  <strong>Treasury Prime ID:</strong>
+  <%= @person_application.treasury_prime_id%>
+</p>
 
-<%= render "shared/api_response" %>
+<p>
+  <strong>Checking Account Application ID:</strong>
+  <%= @person_application.checking_application_id %>
+</p>
 
+<%= link_to 'Apply for Chequing Account', apply_for_chequing_path(@person_application) %> |
 <%= link_to 'Edit', edit_person_application_path(@person_application) %> |
 <%= link_to 'Back', person_applications_path %>
+
+

@@ -62,4 +62,35 @@ class TreasuryPrime
     return @uri_string, @response
   end
 
+  def apply_for_chequing(application)
+    uri = URI::HTTPS.build(
+      host: TREASURY_PRIME_ENDPOINT, 
+      path: '/apply/account_application')
+    @uri_string = uri.to_s
+    connection = Faraday.new(url: @uri_string) do |conn|
+      conn.basic_auth(Rails.application.credentials.treasury_direct_api_key, Rails.application.credentials.treasury_direct_secret_key)
+      conn.response :logger
+      conn.headers['Content-type'] = 'application/json'
+    end
+
+    h = { 
+      "person_applications" => [
+        {
+          "id" => application.treasury_prime_id,
+          "roles" => ["owner", "signer"]
+        }
+      ],
+      "primary_person_application_id" => application.treasury_prime_id,
+      "product" => "personal_savings"
+    }
+
+    puts "applying for checking account: #{JSON.generate(h)}"
+    @response = connection.post do |req|
+      req.body = JSON.generate(h)
+    end
+    puts "Respone to application: #{@response.body}"
+
+    return @uri_string, @response
+
+  end
 end
