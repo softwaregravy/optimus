@@ -1,0 +1,2 @@
+module TreasuryPrimeHelper
+end

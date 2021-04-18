@@ -1,0 +1,46 @@
+<h1>TreasuryPrime#ping</h1>
+
+<div>
+  Response from <%= @uri_string %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+    <th>Response Field</th>
+    <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>Success?</th>
+    <td><%= @response.success?%></td>
+    </tr>
+    <tr>
+    <th>Status</th>
+    <td><%= @response.status %></td>
+    </tr>
+    <tr>
+      <th>Body</th>
+      <td>
+        <table>
+          <thead>
+            <tr>
+              <th>Body Key</th>
+              <th> Body Value</th>
+            </tr>
+          </thead>
+          <tbody>
+      <% @body_values.each do |key, value| %>
+        <tr>
+          <th><%= key %></th>
+          <td><%= value %></td>
+        </tr>
+      <% end %>
+          </tbody>
+        </table>
+      </td>
+  </tbody>
+</table>
+
+
