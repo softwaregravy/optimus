@@ -1,4 +1,4 @@
-<h1>TreasuryPrime#ping</h1>
+<h1><%= @controller_method %></h1>
 
 <div>
   Response from <%= @uri_string %>
@@ -23,6 +23,8 @@
     <tr>
       <th>Body</th>
       <td>
+        <%=raw  Json2table::get_html_table(@response.body) %>
+        <!--
         <table>
           <thead>
             <tr>
@@ -39,6 +41,7 @@
       <% end %>
           </tbody>
         </table>
+        -->
       </td>
   </tbody>
 </table>
