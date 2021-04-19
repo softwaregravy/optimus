@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'checking_account(/:id)', to: 'checking_account#show', as: 'checking_account'
+  get 'checking_account/details(/:id)', to: 'checking_account#details', as: 'checking_account_details'
   root to: 'treasury_prime#ping'
   resources :person_applications 
   get 'person_applications/apply_for_chequing(/:id)', to: 'person_applications#apply_for_chequing', as: 'apply_for_chequing'

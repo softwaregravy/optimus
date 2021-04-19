@@ -58,8 +58,8 @@ class PersonApplicationsController < ApplicationController
         @uri_string, @response = service.apply_for_chequing(@person_application)
         if @response.success?
           @person_application.checking_application_id = JSON.parse(@response.body)["id"]
-          @person_application.save
-          format.html { render :show, status: :created, notice: "Applied for account" }
+          @person_application.save!
+          format.html { redirect_to @person_application, status: :created, notice: "Applied for account" }
         else
           format.html { render :show, status: :unprocessable_entity, notice: "Checking account application failed" }
         end

@@ -63,7 +63,9 @@
 
 <p>
   <strong>Checking Account Application ID:</strong>
-  <%= @person_application.checking_application_id %>
+  <% if @person_application.checking_application_id.present? %>
+    <%= link_to @person_application.checking_application_id, checking_account_path(@person_application.checking_application_id)  %>
+  <% end %>
 </p>
 
 <%= link_to 'Apply for Chequing Account', apply_for_chequing_path(@person_application) %> |
