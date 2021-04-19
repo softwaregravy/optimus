@@ -1,0 +1,10 @@
+<h1>CheckingAccount#details</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>Balance</strong>
+<% if @current_balance.present? %>
+  <%= number_to_currency @current_balance %>
+<% end %>
+</p>
+

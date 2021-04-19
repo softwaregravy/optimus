@@ -1,0 +1,9 @@
+<h1>CheckingAccount#show</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>Account</strong>
+<% if @account_id.present? %>
+  <%= link_to @account_id, checking_account_details_path(@account_id) %>
+<% end %>
+</p>
